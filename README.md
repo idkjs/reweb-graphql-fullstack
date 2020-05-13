@@ -82,3 +82,37 @@ These are the significant parts of the project:
   configuration for the frontend
 
 Honourable mention: build outputs are in the `.gitignore`.
+
+## Setting Up Postgres
+
+[setting-up-postgres-on-mac-osx](https://www.tunnelsup.com/setting-up-postgres-on-mac-osx/)
+
+```sh
+~/Github/reweb-graphql-fullstack master* 2m 41s
+# pass --pwprompt to get a password prompt
+❯ createuser --pwprompt reweb
+Enter password for new role:
+Enter it again:
+
+# The -O indicates the user that will become the owner of the database.
+~/Github/reweb-graphql-fullstack master* 10s
+❯ createdb -Oreweb rewebdb
+
+~/Github/reweb-graphql-fullstack master*
+❯ psql -U reweb -W rewebdb
+Password:
+psql (12.2, server 12.1)
+Type "help" for help.
+
+rewebdb=>
+```
+
+## Create A Table
+
+Run `psql -U reweb -W rewebdb -f sql/app_users_table.sql`
+
+## Seed DB
+
+Run `psql -U reweb -W rewebdb -f sql/seed_users.sql`
+
+![db](seeded.png)
